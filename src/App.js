@@ -29,7 +29,6 @@ class App extends Component {
       this.setState({
         data
       })
-      console.log(this.state.data.toString() === [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,''].toString());
       if(this.state.data.toString() === [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,''].toString()){
         this.setState({
           completed:true
