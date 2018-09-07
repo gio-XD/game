@@ -31,10 +31,12 @@ li{
 }
 .box{
   margin-top: 46px;
+  user-select: none;
 }
 .empty{
   margin-top: 46px;
   height: 48px;
+  user-select: none;
 }
 
 .notempty{

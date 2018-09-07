@@ -10,16 +10,18 @@ class App extends Component {
     const arr = Array.from(new Array(15)).map((_,i)=> i+1 )
     arr.push('')
     this.state={
-      data:randomArray(arr)
+      data:randomArray(arr),
+      completed:false
     }
   }
 
   renderUlChildren(){
-    const {data} = this.state,children=[];
-    var completed = true;
+    const {data,completed} = this.state,children=[];
     const handleClick = (item) => {
       let itemIndex = data.indexOf(item),emptyIndex = data.indexOf('');
-      if(itemIndex + 4 !== emptyIndex && itemIndex - 4 !== emptyIndex && itemIndex + 1 !== emptyIndex && itemIndex - 1 !== emptyIndex )
+      if(completed)
+      return
+      if(itemIndex + 4 !== emptyIndex && itemIndex - 4 !== emptyIndex && itemIndex + 1 !== emptyIndex && itemIndex - 1 !== emptyIndex)
       return
       data[itemIndex] = ''
       data[emptyIndex] = item
@@ -27,16 +29,15 @@ class App extends Component {
       this.setState({
         data
       })
+      console.log(this.state.data.toString() === [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,''].toString());
+      if(this.state.data.toString() === [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,''].toString()){
+        this.setState({
+          completed:true
+        })
+        console.log(123);
+        alert('成功')
+      }
 
-      this.state.data.forEach((item,i) => {
-        if(!item)
-        return
-        if(item !== i)
-        completed = false
-      })
-
-      if(completed)
-      alert('成功')
     }
     data.forEach((item,i) => {
       if(item){
